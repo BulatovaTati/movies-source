@@ -43,56 +43,74 @@ export function cardRender({
     });
   }
 
-  let movieOverviev = overview;
+  let movieOverview = overview;
 
   const overviewInfo = overview.trim().split(' ').length;
   if (overviewInfo === '') {
-    movieOverviev = 'Sorry there is no overview of that movie';
+    movieOverview = 'Sorry there is no overview of that movie';
   } else if (overviewInfo < 3 || overviewInfo > 90) {
-    movieOverviev = 'Click to read more';
+    movieOverview = 'Click to read more';
   }
 
-  return `<li class="card__item" data-id='${id}'> 
-            <a href="#" class="gallery-art">
+  return `<li class="card__item" data-id="${id}">
+  <a href="#" class="gallery-art">
+    <div class="card__img--container">
+      <img
+        class="card__img"
+        src="${poster_path === null ? noPosterImg : BASE_IMG_URL + poster_path}"
+        alt="Poster of movie"
+        loading="lazy"
+      />
+    </div>
+    
+    <div class="card__info">
+      <h2 class="card__title">${title ? title : name}</h2>
+      <div class="card__decr">
+        <p class="card__genre">
+          ${
+            filmGenresArray && filmGenresArray.length > 0
+              ? filmGenresArray.splice(0, 2).concat('Other').join(', ')
+              : 'no genres'
+          }
+          <span>${' '}|${' '}</span>
+        </p>
+        <p class="card__year">${year ? year : 'no year'}</p>
+        <p class="card__rating">
+          ${vote_average.toFixed(1) ? vote_average.toFixed(1) : 'no rate'}
+        </p>
+      </div>
+    </div>
+    <div class="cards-back-text">
+      <div class="cards-back__container">
+        <h2 class="cards-back__title">OVERVIEW :</h2>
+        <span class="description__films"> ${movieOverview} </span>
+      </div>
 
-              <div class="card__img--container">
-                  <img class="card__img "
-                   src="${
-                     poster_path === null
-                       ? noPosterImg
-                       : BASE_IMG_URL + poster_path
-                   }" 
-                   alt="Poster of movie"  
-                   loading="lazy">
-              </div> 
 
-              <div class="card__info">
-                <h2 class="card__title">${title ? title : name}</h2>     
-                <div class="card__decr">          
-                  <p class="card__genre">
-                  ${
-                    filmGenresArray && filmGenresArray.length > 0
-                      ? filmGenresArray.splice(0, 2).concat('Other').join(', ')
-                      : 'no genres'
-                  }
-                    <span>${' '}|${' '}</span>
-                  </p>
-                  <p class="card__year">${year ? year : 'no year'}
-                    </p> 
-                    <p class="card__rating">${
-                      vote_average.toFixed(1)
-                        ? vote_average.toFixed(1)
-                        : 'no rate'
-                    }</p> 
- 
-                </div>
-
-              </div>
-                                <div class="cards-back-text">
-              <span class="description_films"> ${movieOverviev} </span>
-                </div>
-            </a>
-          </li>`;
+    </div>
+  </a>
+</li>`;
 }
 
 export { noPosterImg };
+
+// <ul class="modal-movie__btn-list">
+//   <li class="modal-movie__btn-item">
+//     <button
+//       class="button button--modal-btn item--clear"
+//       type="button"
+//       data-action="watch"
+//     >
+//       add to Watched
+//     </button>
+//   </li>
+//   <li class="modal-movie__btn-item">
+//     <button
+//       class="button button--modal-btn item--clear"
+//       type="button"
+//       data-action="queue"
+//     >
+//       add to queue
+//     </button>
+//   </li>
+// </ul>;

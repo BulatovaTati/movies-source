@@ -22,7 +22,7 @@ async function fetchMovieSearcher(text, page = 1) {
     const response = await axios.get(
       `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${text}&page=${page}`
     );
-    // console.log(response.data);
+
     return response.data;
   } catch (error) {
     console.error('Smth wrong with api search fetch' + error);

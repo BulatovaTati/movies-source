@@ -11,6 +11,7 @@ function renderMovieInfo({
   overview,
 }) {
   const genresString = genres.map(genre => genre.name).join(', ');
+
   const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/';
   return `<button class="btn close-btn" type="button">
     <svg class="close-btn__icon" width="30" height="30" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">

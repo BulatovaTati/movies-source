@@ -24,6 +24,16 @@ function onMovieCardClick(e) {
       .then(response => {
         modalMovieToggle();
         modalMovie.innerHTML = renderMovieInfo(response);
+        if (response.backdrop_path !== null) {
+          const background = `https://image.tmdb.org/t/p/original/${response.backdrop_path}`;
+          backdrop.style.backgroundImage = `url('${background}')`;
+          backdrop.style.backgroundSize = 'cover';
+          backdrop.style.backgroundPosition = '50% 50%';
+        } else {
+          backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.56)';
+          backdrop.style.backgroundImage = `none`;
+        }
+
         addModalMovieListeners();
         spinner.disable();
         return response;

@@ -3,23 +3,18 @@
   top: 0;
   left: 0;
   z-index: 20;
-  opacity: 0.25;
+  opacity: 1;
   visibility: visible;
 
   width: 100%;
   height: 100%;
 
-  background-color: getColor(primary-text-color);
-
   transition: opacity getProperty(time) getProperty(cubic),
-    visibility getProperty(time) getProperty(cubic);
+    visibility getProperty(time) getProperty(cubic),
+    translate getProperty(time) getProperty(cubic);
 
-  @media screen and (min-width: getSize(desktop)) {
-    opacity: 0;
-
-    background-color: none;
-  }
 }
+
 
 .modal-movie {
   position: fixed;
@@ -36,8 +31,9 @@
   background-color: getColor(white-text-color);
 
   transform: translate(-50%, -50%) scale(1);
-  transition: opacity getProperty(time) getProperty(cubic),
-    visibility getProperty(time) getProperty(cubic);
+  transition: opacity 1s getProperty(cubic),
+    visibility 1s getProperty(cubic),
+    translate getProperty(time) getProperty(cubic);
 
   @media screen and (max-width: getSize(wmobile)) {
     width: 98%;
@@ -57,7 +53,6 @@
 
   @media screen and (min-width: getSize(desktop)) {
     width: 806px;
-    border: 1px solid #000;
   }
 }
 
@@ -81,17 +76,23 @@
   justify-content: center;
   align-items: center;
 
-  padding: 0;
+  padding: 4px;
   border: none;
 
   background-color: transparent;
-  color: #000;
+  color: getColor(primary-text-color);
 
   cursor: pointer;
 }
 
 .close-btn__icon {
   fill: currentColor;
+  transition: fill getProperty(time) getProperty(cubic);
+
+  &:hover,
+  &:focus {
+    fill: getColor(accent-text-color);
+  }
 }
 
 .modal-movie__thumb {
@@ -112,26 +113,26 @@
     width: 264px;
     height: 374px;
     margin-bottom: 0;
-    margin-right: 68px;
+    margin-right: 50px;
   }
 
   @media screen and (min-width: getSize(desktop)) {
     width: 375px;
-    height: 478px;
-    margin-right: 16px;
+    height: auto;
+    margin-right: 30px;
   }
 }
 
 .modal-movie__img {
   width: 100%;
-  height: 100%;
+
 }
 
 .modal-movie__info-container {
   width: 100%;
 
   @media screen and (min-width: getSize(tablet)) and (max-width: getSize(wdesktop)) {
-    width: 264px;
+    width: 318px;
   }
 
   @media screen and (min-width: getSize(desktop)) {
@@ -205,8 +206,6 @@
   @media screen and (min-width: getSize(tablet)) and (max-width: getSize(wdesktop)) {
     margin-bottom: 40px;
   }
-
-  @media screen and (min-width: getSize(desktop)) {}
 }
 
 .modal-movie__btn-list {
@@ -246,17 +245,16 @@
   @include lh(16px, 12px, 12px);
   text-transform: uppercase;
 
-  color: #000;
-  border-color: #000;
-
+  color: getColor(primary-text-color);
+  border-color: getColor(primary-text-color);
   cursor: pointer;
 
   @media screen and (min-width: getSize(tablet)) {
-    width: 125px;
+    width: 135px;
   }
 
   @media screen and (min-width: getSize(desktop)) {
-    width: 136px;
+    width: 155px;
   }
 
   &:hover {

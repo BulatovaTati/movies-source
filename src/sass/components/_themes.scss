@@ -48,3 +48,29 @@
 .dark .card__year {
     color: getColor(white-text-color);
 }
+
+.dark .modal-movie {
+    background-color: rgba(140, 140, 140, 0.9);
+    color: getColor(white-text-color);
+}
+
+.dark .modal-movie__cell--gray-text {
+    color: getColor(white-text-color);
+}
+
+.dark .button--trailer,
+.dark .button--modal-btn {
+    color: getColor(white-text-color);
+    border-color: getColor(white-text-color);
+}
+
+.dark .close-btn__icon {
+    fill: getColor(white-text-color);
+
+    transition: fill getProperty(time) getProperty(cubic);
+
+    &:hover,
+    &:focus {
+        fill: getColor(accent-text-color);
+    }
+}
