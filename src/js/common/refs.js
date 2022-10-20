@@ -9,5 +9,7 @@ export const refs = {
   watchedButton: document.querySelector('.watched_button'),
   noFilmsMessage: document.querySelector('.alert__message'),
   backdrop: document.querySelector('.backdrop'),
+  modal_movie_img: document.querySelector('modal-movie__img'),
+  modal_movie: document.querySelector('.modal-movie'),
   isWatchTabActive: true,
 };

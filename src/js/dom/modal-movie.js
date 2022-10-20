@@ -2,14 +2,11 @@ import { fetchMovieForId } from '../api/fetchApi';
 import { renderMovieInfo } from './modal-movie-markup';
 import { localStorageFunction } from './localeStorage-watch&queue';
 import { onLoadTrailer } from './trailer';
+import { refs } from '../common/refs';
 import Spinner from '../common/spinner';
 const spinner = new Spinner();
 
-const cardsList = document.querySelector('.cards__list');
-const modalMovie = document.querySelector('.modal-movie');
-const backdrop = document.querySelector('.backdrop');
-
-cardsList.addEventListener('click', onMovieCardClick);
+refs.cardsContainer.addEventListener('click', onMovieCardClick);
 
 function onMovieCardClick(e) {
   e.preventDefault();
@@ -23,15 +20,15 @@ function onMovieCardClick(e) {
     fetchMovieForId(selectedMovieId)
       .then(response => {
         modalMovieToggle();
-        modalMovie.innerHTML = renderMovieInfo(response);
+        refs.modal_movie.innerHTML = renderMovieInfo(response);
         if (response.backdrop_path !== null) {
           const background = `https://image.tmdb.org/t/p/original/${response.backdrop_path}`;
-          backdrop.style.backgroundImage = `url('${background}')`;
-          backdrop.style.backgroundSize = 'cover';
-          backdrop.style.backgroundPosition = '50% 50%';
+          refs.backdrop.style.backgroundImage = `url('${background}')`;
+          refs.backdrop.style.backgroundSize = 'cover';
+          refs.backdrop.style.backgroundPosition = '50% 50%';
         } else {
-          backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.56)';
-          backdrop.style.backgroundImage = `none`;
+          refs.backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.56)';
+          refs.backdrop.style.backgroundImage = `none`;
         }
 
         addModalMovieListeners();
@@ -39,6 +36,7 @@ function onMovieCardClick(e) {
         return response;
       })
       .then(response => {
+        console.log(response);
         onLoadTrailer(selectedMovieId);
         localStorageFunction(response);
       })
@@ -53,7 +51,7 @@ function onCloseModalMovie(e) {
     e.target.classList.contains('close-btn__icon') ||
     e.target.parentNode.classList.contains('close-btn__icon');
 
-  if (e.code === 'Escape' || isContainsClass || e.target === backdrop) {
+  if (e.code === 'Escape' || isContainsClass || e.target === refs.backdrop) {
     modalMovieToggle();
     clearModalMovieInfo();
     removeModalMovieListeners();
@@ -61,23 +59,23 @@ function onCloseModalMovie(e) {
 }
 
 function modalMovieToggle() {
-  backdrop.classList.toggle('is-hidden');
-  modalMovie.classList.toggle('is-hidden');
+  refs.backdrop.classList.toggle('is-hidden');
+  refs.modal_movie.classList.toggle('is-hidden');
   document.body.classList.toggle('modal-open');
 }
 
 function addModalMovieListeners() {
-  backdrop.addEventListener('click', onCloseModalMovie);
+  refs.backdrop.addEventListener('click', onCloseModalMovie);
   window.addEventListener('keydown', onCloseModalMovie);
-  modalMovie.addEventListener('click', onCloseModalMovie);
+  refs.modal_movie.addEventListener('click', onCloseModalMovie);
 }
 
 function removeModalMovieListeners() {
-  backdrop.removeEventListener('click', onCloseModalMovie);
+  refs.backdrop.removeEventListener('click', onCloseModalMovie);
   window.removeEventListener('keydown', onCloseModalMovie);
-  modalMovie.removeEventListener('click', onCloseModalMovie);
+  refs.modal_movie.removeEventListener('click', onCloseModalMovie);
 }
 
 function clearModalMovieInfo() {
-  modalMovie.innerHTML = '';
+  refs.modal_movie.innerHTML = '';
 }
