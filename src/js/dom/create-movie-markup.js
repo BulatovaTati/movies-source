@@ -86,6 +86,26 @@ export function cardRender({
         <span class="description__films"> ${movieOverview} </span>
       </div>
 
+<ul class="modal-movie__btn-list  ">
+  <li class="modal-movie__btn-item">
+    <button
+      class="button button--modal-btn item--clear"
+      type="button"
+  
+    >
+      add to Watched
+    </button>
+  </li>
+  <li class="modal-movie__btn-item">
+    <button
+      class="button button--modal-btn item--clear"
+      type="button"
+     
+    >
+      add to queue
+    </button>
+  </li>
+</ul>;
 
     </div>
   </a>
@@ -93,24 +113,3 @@ export function cardRender({
 }
 
 export { noPosterImg };
-
-// <ul class="modal-movie__btn-list">
-//   <li class="modal-movie__btn-item">
-//     <button
-//       class="button button--modal-btn item--clear"
-//       type="button"
-//       data-action="watch"
-//     >
-//       add to Watched
-//     </button>
-//   </li>
-//   <li class="modal-movie__btn-item">
-//     <button
-//       class="button button--modal-btn item--clear"
-//       type="button"
-//       data-action="queue"
-//     >
-//       add to queue
-//     </button>
-//   </li>
-// </ul>;

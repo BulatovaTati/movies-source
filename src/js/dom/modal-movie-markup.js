@@ -9,7 +9,12 @@ function renderMovieInfo({
   vote_average,
   original_title,
   overview,
+  production_companies,
 }) {
+  const logo = production_companies.map(
+    log => `https://image.tmdb.org/t/p/w200/${log.logo_path}`
+  );
+
   const genresString = genres.map(genre => genre.name).join(', ');
 
   const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/';
@@ -84,6 +89,11 @@ function renderMovieInfo({
         </button>
       </li>
     </ul>
+     
+  <img class="modal-movie--logo" src="${
+    !logo ? 'no image' : logo[0]
+  }"  alt="LOGO"  >
+ 
   </div>`;
 }
 

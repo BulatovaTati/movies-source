@@ -6,9 +6,6 @@ import { renderCollection } from '../dom/create-movie-markup';
 
 const pagination = new Pagination('pagination', options);
 const spinner = new Spinner();
-// const refs = {
-//   lastPageBtnText: document.querySelector('.tui-ico-last'),
-// };
 
 pagination.on('afterMove', onPaginationClick);
 

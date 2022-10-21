@@ -98,10 +98,11 @@
 
 .modal-movie__thumb {
   margin-bottom: 21px;
+  position: relative;
 
   border-radius: 5px;
   overflow: hidden;
-  outline: 1px solid rgb(164, 164, 164);
+
 
   @media screen and (min-width: getSize(mobile)) {
     display: flex;
@@ -126,7 +127,9 @@
 
 .modal-movie__img {
   width: 100%;
-
+  position: absolute;
+  top: 0;
+  box-shadow: 0 0 20px 5px rgba(255, 107, 1, 0.251), 0 0 15px 3px rgb(255, 107, 1);
 }
 
 .modal-movie__info-container {
@@ -211,6 +214,7 @@
 
 .modal-movie__btn-list {
   display: flex;
+  margin-bottom: 20px;
 
   @media screen and (max-width: getSize(wmobile)) {
     justify-content: center;
@@ -269,4 +273,9 @@
   color: getColor(white-text-color);
   background-color: getColor(accent-bg-color);
   border: none;
+}
+
+.modal-movie--logo {
+  margin-left: auto;
+  margin-right: auto;
 }

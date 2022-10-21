@@ -14,7 +14,9 @@ function onMovieCardClick(e) {
   if (e.target !== e.currentTarget) {
     const selectedMovie = e.target.closest('li');
     const selectedMovieId = Number(selectedMovie.getAttribute('data-id'));
-
+    if (e.target.nodeName === 'BUTTON') {
+      return;
+    }
     spinner.enable();
 
     fetchMovieForId(selectedMovieId)
@@ -36,7 +38,6 @@ function onMovieCardClick(e) {
         return response;
       })
       .then(response => {
-        console.log(response);
         onLoadTrailer(selectedMovieId);
         localStorageFunction(response);
       })
