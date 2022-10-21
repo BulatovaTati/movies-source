@@ -1,32 +1,36 @@
-<footer class="footer">
-  <div class="container footer__container">
-    <p class="footer__info">
-      © 2022 | <span class="lang__rights_text">All Rights Reserved</span> |
-    </p>
-    <p class="footer__info">
-      <span class="footer__text"> Developed with</span>
-      <svg width="14" height="13" class="footer__icon">
-        <use href="./images/sprite.svg#icon-heart"></use>
-      </svg>
-      <span class="footer__by_text">by</span>
+import git from '../../images/sprite.svg';
 
-      <button type="button" class="footer__btn" data-open-modal__window>
-        GoIT Students
-      </button>
-    </p>
-    <div class="overlay is-open-modal" data-modal__window>
-      <div class="modal footer__wrapper">
-        <button class="footer-modal__btn" data-close-modal__window>
-          <svg width="20" height="20" class="swiper__icon">
-            <use href="./images/sprite.svg#icon-close"></use>
-          </svg>
-        </button>
-        <div class="swiper swiper--bcg">
-          <div class="swiper-wrapper swiper-wrapper--pad">
-            <!-- <div class="swiper-slide">
+import tatiWebp from '../../images/footer-team/tetiana-webp.webp';
+import dianaWebp from '../../images/footer-team/diana-webp.webp';
+import yaroslavWebp from '../../images/footer-team/yaroslav-webp.webp';
+import rostWebp from '../../images/footer-team/rost-webp.webp';
+import yuraWebp from '../../images/footer-team/Yura-webp.webp';
+import vitaliiPolWebp from '../../images/footer-team/vitalPol-webp.webp';
+import vitaliiMisWebp from '../../images/footer-team/vitM-webp.webp';
+import oleksiiWebp from '../../images/footer-team/oleksii-webp.webp';
+import andriiWebp from '../../images/footer-team/andrii-webp.webp';
+import oleksWebp from '../../images/footer-team/alex-webp.webp';
+import mentor from '../../images/footer-team/mentor-webp.webp';
+//
+import tatiPng from '../../images/footer-team/tetiana.png';
+import dianaPng from '../../images/footer-team/diana.png';
+import yaroslavPng from '../../images/footer-team/rost.png';
+import rostPng from '../../images/footer-team/diana.png';
+import yuraPng from '../../images/footer-team/Yura.png';
+import vitaliiPolPng from '../../images/footer-team/vitalPol.png';
+import vitaliiMisPng from '../../images/footer-team/vitM.png';
+import oleksiiPng from '../../images/footer-team/oleksii.png';
+import andriiPng from '../../images/footer-team/andrii.png';
+import oleksPng from '../../images/footer-team/alex.png';
+import mentorPng from '../../images/footer-team/mentor.png';
+
+//
+const ref = document.querySelector('.swiper-wrapper.swiper-wrapper--pad');
+
+const markupModalFooter = `<div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/tetiana-webp.webp 1x"
+                  srcset="${tatiWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -34,7 +38,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/tetiana.png"
+                  src="${tatiPng}"
                   alt="TeamLead - Tetiana Bulatova"
                   loading="lazy"
                 />
@@ -48,7 +52,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
               </div>
@@ -62,7 +66,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/diana-webp.webp 1x"
+                  srcset="${dianaWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -71,7 +75,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/diana.png"
+                  src="${dianaPng}"
                   alt="Diana Pustolyakova"
                   loading="lazy"
                 />
@@ -86,7 +90,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -100,7 +104,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/yaroslav-webp.webp 1x"
+                  srcset="${yaroslavWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -109,7 +113,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/yaroslav.png"
+                  src="${yaroslavPng}"
                   alt="Yaroslav Taranovskiy"
                   loading="lazy"
                 />
@@ -123,7 +127,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -138,7 +142,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/rost-webp.webp 1x"
+                  srcset="${rostWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -147,7 +151,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/rost.png"
+                  src="${rostPng}"
                   alt="Rostyslav Kviatkovskyi"
                   loading="lazy"
                 />
@@ -162,7 +166,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -177,7 +181,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/Yura-webp.webp 1x"
+                  srcset="${yuraWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -186,7 +190,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/Yura.png"
+                  src="${yuraPng}"
                   alt="Yurii Pohorilets"
                   loading="lazy"
                 />
@@ -201,7 +205,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -215,7 +219,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/vitalPol-webp.webp 1x"
+                  srcset="${vitaliiPolWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -224,7 +228,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team//vitalPol.png"
+                  src="${vitaliiPolPng}"
                   alt="Vitaliy Poliakov"
                   loading="lazy"
                 />
@@ -239,7 +243,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -252,7 +256,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/vitM-webp.webp 1x"
+                  srcset="${vitaliiMisWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -261,7 +265,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/vitM.png"
+                  src="${vitaliiMisPng}"
                   alt="Vitaliy Mishugli"
                   loading="lazy"
                 />
@@ -276,7 +280,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -289,7 +293,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/oleksii-webp.webp 1x"
+                  srcset="${oleksiiWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -298,7 +302,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/oleksii.png"
+                  src="${oleksiiPng}"
                   alt="Oleksii Kolisnyk"
                   loading="lazy"
                 />
@@ -313,7 +317,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -328,7 +332,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/andrii-webp.webp 1x"
+                  srcset="${andriiWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -337,7 +341,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/andrii.png"
+                  src="${andriiPng}"
                   alt="Andrii Stepaniuk"
                   loading="lazy"
                 />
@@ -352,7 +356,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -365,7 +369,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/alex-webp.webp 1x"
+                  srcset="${oleksWebp} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -374,7 +378,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/alex.png"
+                  src="${oleksPng}"
                   alt="Oleksandr Chyhryn"
                   loading="lazy"
                 />
@@ -389,7 +393,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
                 <p class="swiper__comment">
@@ -404,7 +408,7 @@
             <div class="swiper-slide">
               <picture>
                 <source
-                  srcset="./images/footer-team/mentor-webp.webp 1x"
+                  srcset="${mentor} 1x"
                   type="image/webp"
                   media="(min-width: 320px)"
                 />
@@ -413,7 +417,7 @@
                   width="174"
                   height="174"
                   class="swiper-img"
-                  src="./images/footer-team/mentor.png"
+                  src="${mentorPng}"
                   alt="Mentor - Vladyslav Rokhmaniuk"
                   loading="lazy"
                 />
@@ -428,7 +432,7 @@
                   rel="noopener noreferrer"
                 >
                   <svg width="20" height="20" class="swiper__icon">
-                    <use href="./images/sprite.svg#icon-github"></use>
+                    <use href="${git}#icon-github"></use>
                   </svg>
                 </a>
               </div>
@@ -438,12 +442,8 @@
                 additional information, articles that could help the team in the
                 implementation of the project.
               </p>
-            </div> -->
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+            </div>
+
+    `;
+
+ref.innerHTML = markupModalFooter;
