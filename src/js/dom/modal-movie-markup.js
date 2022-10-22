@@ -11,10 +11,14 @@ function renderMovieInfo({
   overview,
   production_companies,
 }) {
-  const logo = production_companies.map(
-    log => `https://image.tmdb.org/t/p/w200/${log.logo_path}`
-  );
-
+  const logo = production_companies.map(log => {
+    if (log.logo_path === null) {
+      return `https://sd.keepcalms.com/i/sorry-no-picture-available-2.png`;
+    } else {
+      return `https://image.tmdb.org/t/p/w200/${log.logo_path}`;
+    }
+  });
+  console.log(logo);
   const genresString = genres.map(genre => genre.name).join(', ');
 
   const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/';
@@ -89,10 +93,10 @@ function renderMovieInfo({
         </button>
       </li>
     </ul>
-     
+ 
   <img class="modal-movie--logo" src="${
-    !logo ? 'no image' : logo[0]
-  }"  alt="LOGO"  >
+    logo[0]
+  }"  alt="No production informations"  >
  
   </div>`;
 }
