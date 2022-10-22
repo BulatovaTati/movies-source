@@ -1,5 +1,8 @@
 import { refs } from '../common/refs';
 import { getFromStorage } from '../other/localeStorageServices';
+import { auth } from '../other/log-in';
+import Notiflix from 'notiflix';
+import { chooseThemeForNotiflix } from '../other/notiflix';
 
 function localStorageFunction(movieData) {
   const filmObject = JSON.stringify(movieData);
@@ -30,41 +33,51 @@ function localStorageFunction(movieData) {
 
   function addWatch() {
     if (movieData) {
-      let film = JSON.parse(localStorage.getItem('watch')) || [];
-      if (film.find(e => e.id === movieData.id)) {
-        watchBtn.classList.remove('button--accent-btn');
-        watchBtn.textContent = 'ADD TO WATCHED';
-        film = film.filter(e => e.id !== movieData.id);
-        if (isLibraryPage && cartItem && refs.isWatchTabActive) {
-          cartItem.remove();
-        }
+      chooseThemeForNotiflix();
+      if (auth.currentUser === null) {
+        Notiflix.Report.info('Oops', 'Please Log In first 🙈', 'Okay');
       } else {
-        watchBtn.classList.add('button--accent-btn');
-        watchBtn.textContent = 'REMOVE FROM WATCHED';
-        film.push(movieData);
+        let film = JSON.parse(localStorage.getItem('watch')) || [];
+        if (film.find(e => e.id === movieData.id)) {
+          watchBtn.classList.remove('button--accent-btn');
+          watchBtn.textContent = 'ADD TO WATCHED';
+          film = film.filter(e => e.id !== movieData.id);
+          if (isLibraryPage && cartItem && refs.isWatchTabActive) {
+            cartItem.remove();
+          }
+        } else {
+          watchBtn.classList.add('button--accent-btn');
+          watchBtn.textContent = 'REMOVE FROM WATCHED';
+          film.push(movieData);
+        }
+        localStorage.setItem('watch', JSON.stringify(film));
       }
-      localStorage.setItem('watch', JSON.stringify(film));
     }
     isLocalStorageEmpty('watch');
   }
 
   function addQueue() {
-    if (movieData) {
-      let film = JSON.parse(localStorage.getItem('queue')) || [];
-      if (film.find(e => e.id === movieData.id)) {
-        queueBtn.classList.remove('button--accent-btn');
-        queueBtn.textContent = 'ADD TO QUEUE';
-        film = film.filter(e => e.id !== movieData.id);
+    chooseThemeForNotiflix();
+    if (auth.currentUser === null) {
+      Notiflix.Report.info('Oops', 'Please Log In first 🙈', 'Okay');
+    } else {
+      if (movieData) {
+        let film = JSON.parse(localStorage.getItem('queue')) || [];
+        if (film.find(e => e.id === movieData.id)) {
+          queueBtn.classList.remove('button--accent-btn');
+          queueBtn.textContent = 'ADD TO QUEUE';
+          film = film.filter(e => e.id !== movieData.id);
 
-        if (isLibraryPage && cartItem && !refs.isWatchTabActive) {
-          cartItem.remove();
+          if (isLibraryPage && cartItem && !refs.isWatchTabActive) {
+            cartItem.remove();
+          }
+        } else {
+          queueBtn.classList.add('button--accent-btn');
+          queueBtn.textContent = 'REMOVE FROM QUEUE';
+          film.push(movieData);
         }
-      } else {
-        queueBtn.classList.add('button--accent-btn');
-        queueBtn.textContent = 'REMOVE FROM QUEUE';
-        film.push(movieData);
+        localStorage.setItem('queue', JSON.stringify(film));
       }
-      localStorage.setItem('queue', JSON.stringify(film));
     }
     isLocalStorageEmpty('queue');
   }

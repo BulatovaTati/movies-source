@@ -28,6 +28,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 export const auth = getAuth();
+
+refs.library.addEventListener('click', checkLogInForMyLibrary);
+
+function checkLogInForMyLibrary() {
+  chooseThemeForNotiflix();
+  if (auth.currentUser === null) {
+    refs.library.removeAttribute('href');
+    Notiflix.Report.info('Oops', 'Please Log In first 🙈', 'Okay');
+  } else {
+    refs.library.setAttribute('href', './library.html');
+  }
+}
+
 let user;
 
 if (refs.formLogIn) {
@@ -125,12 +138,11 @@ function onLogin(event) {
       onUserLogIn();
       Notiflix.Report.success(
         'Hello there!',
-        'Welcome back to Filmoteka! Already know which movie wanna see? 🦥',
+        'Welcome back to Filmoteka! Already know which movie wanna see? 😁',
         'Nice to be Home!'
       );
     })
     .catch(error => {
-      console.log('error: ', error);
       Notiflix.Report.warning(
         'Hmm',
         'Something wrong with your reqwest, please try again 🙊',
