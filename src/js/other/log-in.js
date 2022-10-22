@@ -30,7 +30,6 @@ const database = getDatabase(app);
 export const auth = getAuth();
 
 refs.library.addEventListener('click', checkLogInForMyLibrary);
-console.log('refs.library.: ', refs.library);
 
 function checkLogInForMyLibrary() {
   chooseThemeForNotiflix();
