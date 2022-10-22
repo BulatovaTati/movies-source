@@ -85,28 +85,6 @@ export function cardRender({
         <h2 class="cards-back__title">OVERVIEW :</h2>
         <span class="description__films"> ${movieOverview} </span>
       </div>
-
-<ul class="modal-movie__btn-list  ">
-  <li class="modal-movie__btn-item">
-    <button
-      class="button button--modal-btn item--clear"
-      type="button"
-  
-    >
-      add to Watched
-    </button>
-  </li>
-  <li class="modal-movie__btn-item">
-    <button
-      class="button button--modal-btn item--clear"
-      type="button"
-     
-    >
-      add to queue
-    </button>
-  </li>
-</ul>;
-
     </div>
   </a>
 </li>`;

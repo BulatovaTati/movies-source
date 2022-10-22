@@ -1,11 +1,11 @@
 .backdrop_login {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.63);
+    background-color: getColor(modal-overlay);
     position: fixed;
     top: 0;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-        visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity getProperty(time) getProperty(cubic),
+        visibility getProperty(time) getProperty(cubic);
 }
 
 .modal_login {
@@ -34,33 +34,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     position: absolute;
+
     top: 20px;
     right: 20px;
+
     width: 30px;
     height: 30px;
     padding: 0;
     margin: 0;
     cursor: pointer;
-    color: #000000;
-    background: #ffffff;
+
+    background: getColor(white-text-color);
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all getProperty(time) getProperty(cubic);
 
 
     &:hover,
     &:focus {
         transform: scale(1.15);
         color: getColor(primary-text-color);
-        box-shadow: 0px 8px 43px getColor(footer-text-color);
         border: 1px solid getColor(my-library-current-bcg-button);
     }
 }
 
-.modal_login__button_icon {
-    fill: getColor(primary-text-color);
-}
+// .modal_login__button_icon {
+//     fill: getColor(primary-text-color);
+// }
 
 .modal_login__title_signIn,
 .modal_login__title_signUp,
@@ -70,22 +72,16 @@
 .modal_login__button_confirm,
 .signUp_now,
 .signIn_now {
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all getProperty(time) getProperty(cubic);
 }
 
 .modal_login__title_signIn,
 .modal_login__title_signUp {
     font-weight: 700;
-    font-size: 20px;
-    line-height: calc(30 / 20);
+    @include lh(30px, 20px, 20px);
     text-align: center;
     letter-spacing: 0.03em;
-    color: #212121;
     margin-bottom: 12px;
-
-    @media screen and (min-width: getSize(desktop)) {
-        line-height: calc(23 / 20);
-    }
 }
 
 .modal_login__wrap_name,
@@ -98,24 +94,26 @@
 
 .modal_login__label {
     display: block;
-    font-size: 12px;
-    line-height: calc(14 / 12);
+    @include lh(14px, 12px, 12px);
     letter-spacing: 0.01em;
-    color: #757575;
+    color: getColor(footer-text-color);
     margin-bottom: 4px;
+
 }
 
 .modal_login__input {
     position: relative;
     width: 240px;
+
     padding-top: 11px;
     padding-bottom: 11px;
     padding-left: 30px;
     outline: none;
+
     border: 1px solid rgba(33, 33, 33, 0.2);
     box-sizing: border-box;
     border-radius: 4px;
-    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: border-color getProperty(time) getProperty(cubic);
 
     @media screen and (min-width: getSize(tablet)) {
         width: 320px;
@@ -131,7 +129,11 @@
     top: 28px;
     left: 10px;
     fill: currentColor;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: fill getProperty(time) getProperty(cubic);
+
+    @media screen and (min-width: getSize(desktop)) {
+        top: 33px;
+    }
 }
 
 .modal_login__input:hover,

@@ -235,45 +235,6 @@
   }
 }
 
-.button.button--modal-btn {
-  width: 110px;
-  height: 44px;
-
-  transition: color getProperty(time) getProperty(cubic),
-    background-color getProperty(time) getProperty(cubic),
-    border-color getProperty(time) getProperty(cubic);
-
-  @media screen and (max-width: getSize(wmobile)) {
-    padding: 1px 4px;
-  }
-
-  @include lh(16px, 12px, 12px);
-  text-transform: uppercase;
-
-  color: getColor(primary-text-color);
-  border-color: getColor(primary-text-color);
-  cursor: pointer;
-
-  @media screen and (min-width: getSize(tablet)) {
-    width: 135px;
-  }
-
-  @media screen and (min-width: getSize(desktop)) {
-    width: 155px;
-  }
-
-  &:hover {
-    background-color: getColor(accent-text-color);
-    border-color: transparent;
-    color: getColor(white-text-color);
-  }
-}
-
-.button.button--accent-btn {
-  color: getColor(white-text-color);
-  background-color: getColor(accent-bg-color);
-  border: none;
-}
 
 .modal-movie--logo {
   margin-left: auto;

@@ -208,7 +208,6 @@
   &:hover,
   &:focus {
     transform: scale(1.03);
-    // border-bottom: 0.5px solid getColor(accent-text-color);
   }
 
   @media screen and (min-width: getSize(tablet)) {
@@ -263,9 +262,7 @@
   display: flex;
   justify-content: center;
   opacity: 0;
-  // transition: opacity 2s linear;
   transition: all 4s ease;
-  // transition: all 2s ease-out;
 }
 
 .visually-show-error {
