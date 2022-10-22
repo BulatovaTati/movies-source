@@ -49,17 +49,22 @@
     color: getColor(white-text-color);
 }
 
-.dark .modal-movie {
+.dark .modal-movie,
+.dark .modal_login {
     background-color: rgba(140, 140, 140, 0.9);
     color: getColor(white-text-color);
 }
 
-.dark .modal-movie__cell--gray-text {
+.dark .modal-movie__cell--gray-text,
+.dark .modal_login__label,
+.dark .signUp_now__text,
+.dark .modal_login__text {
     color: getColor(white-text-color);
 }
 
 .dark .button--trailer,
-.dark .button--modal-btn {
+.dark .button--modal-btn,
+.dark .modal_login__button_register {
     color: getColor(white-text-color);
     border-color: getColor(white-text-color);
 }
@@ -73,4 +78,13 @@
     &:focus {
         fill: getColor(accent-text-color);
     }
+}
+
+.dark .modal_login__icon {
+    fill: getColor(primary-text-color);
+}
+
+.dark .button.disabled_for_signUp {
+    background-color: rgba(0, 0, 0, 0.4);
+
 }

@@ -60,10 +60,6 @@
     }
 }
 
-// .modal_login__button_icon {
-//     fill: getColor(primary-text-color);
-// }
-
 .modal_login__title_signIn,
 .modal_login__title_signUp,
 .modal_login__wrap_name,
@@ -90,6 +86,10 @@
 .modal_login__wrap_email {
     position: relative;
     margin-bottom: 15px;
+}
+
+.modal_login__wrap_password {
+    margin-bottom: 30px;
 }
 
 .modal_login__label {
@@ -139,62 +139,17 @@
 .modal_login__input:hover,
 .modal_login__input:focus,
 .modal_login__input:hover+.modal_login__icon,
-.modal_login__input:focus+.modal_login__icon,
-.modal_login__textarea:hover,
-.modal_login__textarea:focus {
+.modal_login__input:focus+.modal_login__icon {
     fill: getColor(accent-text-color);
     border-color: getColor(accent-text-color);
-}
-
-.modal_login__wrap_textarea {
-    margin-bottom: 20px;
-}
-
-.modal_login__textarea {
-    resize: none;
-    width: 100%;
-    height: 120px;
-    padding-top: 12px;
-    padding-right: 16px;
-    padding-bottom: 12px;
-    padding-left: 16px;
-    outline: none;
-    border: 1px solid rgba(33, 33, 33, 0.2);
-    box-sizing: border-box;
-    border-radius: 4px;
-    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    @media screen and (min-width: 480px) {
-        width: 370px;
-    }
-
-    @media screen and (min-width: 1200px) {
-        width: 448px;
-    }
-
-    &::placeholder {
-        font-size: 12px;
-        line-height: calc(14 / 12);
-        letter-spacing: 0.01em;
-        color: rgba(117, 117, 117, 0.5);
-    }
 }
 
 .modal_login__wrap_checkbox {
     margin-bottom: 30px;
 }
 
-.modal_login__checkbox:checked+.modal_login__text::before {
-    background-image: url('../images/icons-check-mark.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none;
-    width: 20px;
-
-    @media screen and (min-width: getSize(tablet)) {
-        width: 18px;
-        height: 17px;
-    }
+.modal_login__text {
+    cursor: pointer;
 }
 
 .modal_login__text,
@@ -203,30 +158,48 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
-    line-height: calc(14 / 12);
+
+    @include lh(14px, 12px, 12px);
     letter-spacing: 0.03em;
-    color: #757575;
+
+    color: getColor(footer-text-color);
 
     @media screen and (min-width: getSize(tablet)) {
-        font-size: 12px;
-        line-height: calc(20 / 12);
+        @include lh(20px, 12px, 12px);
     }
 
     @media screen and (min-width: getSize(desktop)) {
-        font-size: 14px;
-        line-height: calc(24 / 14);
+        @include lh(24px, 12px, 12px);
     }
 }
 
 .modal_login__text::before {
     content: "";
-    width: 16px;
+    width: 20px;
     height: 15px;
-    border: 2px solid #212121;
+
+    border: 2px solid getColor(primary-text-color);
     border-radius: 2px;
     display: block;
     margin-right: 8px;
+
+    @media screen and (min-width: getSize(tablet)) {
+        width: 18px;
+        height: 17px;
+    }
+}
+
+.modal_login__checkbox:checked+.modal_login__text::before {
+    background-image: url('../images/icons-check-mark.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 22px;
+
+    @media screen and (min-width: getSize(tablet)) {
+        width: 18px;
+        height: 17px;
+    }
 }
 
 .modal_login__link {
@@ -240,11 +213,12 @@
     position: absolute;
     right: 5px;
     bottom: 5px;
+
     cursor: pointer;
     background-color: transparent;
     border: none;
     outline: none;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: fill getProperty(time) getProperty(cubic);
 
     &:hover {
         fill: getColor(accent-text-color);
@@ -255,38 +229,15 @@
 .modal_login__button_register {
     display: block;
     margin: 0 auto;
-    padding-top: 10px;
-    padding-right: 55px;
-    padding-bottom: 10px;
-    padding-left: 56px;
-    font-family: inherit;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: calc(30 / 16);
-    letter-spacing: 0.06em;
-    cursor: pointer;
-
-    background-color: transparent;
-
-    border-radius: 5px;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    // &:focus,
-    // &:hover {
-    //     background-color: var(--secondary-text-color);
-    //     box-shadow: 0px 8px 43px var(--secondary-text-color);
-    //     color: var(--just-white);
-    // }
 }
 
-.disabled_for_signUp {
-    color: grey;
-    border-color: grey;
+.button.disabled_for_signUp {
+    color: getColor(modal-items);
+    border-color: getColor(modal-items);
 
     &:focus,
     &:hover {
-        background-color: grey;
-        box-shadow: 0px 8px 43px grey;
+        background-color: getColor(modal-items);
         color: getColor(white-text-color);
     }
 }
@@ -295,53 +246,25 @@
 .signIn_now {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 25px;
 }
 
 .signUp_now__link,
 .signIn_now__link {
-    // color: var(--secondary-text-color);
+    color: getColor(accent-text-color);
     cursor: pointer;
     margin-left: 10px;
-    font-size: 12px;
-    line-height: calc(14 / 12);
     letter-spacing: 0.03em;
 
     @media screen and (min-width: getSize(desktop)) {
-        font-size: 14px;
-        line-height: calc(24 / 14);
+        @include lh(24px, 12px, 12px);
     }
 
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform getProperty(time) getProperty(cubic);
 
     &:focus,
     &:hover {
         transform: scale(1.15);
-        // text-shadow: 0px 4px 10px var(--secondary-text-color);
-    }
-}
-
-.modal_login--dark {
-    background-color: bisque;
-}
-
-.modal_login--dark .modal_login__input,
-.modal_login--dark .modal_login__button {
-    background-color: bisque;
-}
-
-.modal_login--dark .modal_login__title_signIn,
-.modal_login--dark .modal_login__title_signUp,
-.modal_login--dark .modal_login__label,
-.modal_login--dark .modal_login__text,
-.modal_login--dark .signUp_now__text,
-.modal_login--dark .signIn_now__text {
-    color: bisque;
-}
-
-.modal_login--dark .modal_login__button_register,
-.modal_login--dark .modal_login__button_confirm {
-    &:hover {
-        color: bisque;
     }
 }
