@@ -18,7 +18,7 @@ function renderMovieInfo({
       return `https://image.tmdb.org/t/p/w200/${log.logo_path}`;
     }
   });
-  console.log(logo);
+
   const genresString = genres.map(genre => genre.name).join(', ');
 
   const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/';
