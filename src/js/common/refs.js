@@ -12,7 +12,7 @@ export const refs = {
   modal_movie_img: document.querySelector('modal-movie__img'),
   modal_movie: document.querySelector('.modal-movie'),
   isWatchTabActive: true,
-  library: document.querySelector('a[href="/library.html"]'),
+  library: document.querySelector('#header-myLibrary'),
   search: document.querySelector('.search-form'),
   catalog: document.querySelector('.poster-list__item'),
   list: document.querySelector('.poster-list'),
@@ -28,7 +28,7 @@ export const refs = {
   movieModal: document.querySelector('.modal'),
   headerLogIn: document.querySelector('.header-logIn'),
   headerLogOut: document.querySelector('.header-logOut'),
-  headerMyLibrary: document.querySelector('#header-myLibrary'),
+
   openModalBtn: document.querySelector('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal-login]'),
