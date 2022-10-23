@@ -81,11 +81,7 @@ function onRegister(event) {
   const email = document.querySelector('#email_1').value;
   const password = document.querySelector('#password').value;
   if (validateEmail(email) === false || validatePassword(password) === false) {
-    Notiflix.Report.info(
-      'Wow dude',
-      'Email or Password is Outta Line 🙈',
-      'Agree'
-    );
+    Notiflix.Report.info('Sorry', 'Fill in all the fields 🙈', 'Agree');
     return;
   }
   createUserWithEmailAndPassword(auth, email, password)
@@ -98,7 +94,7 @@ function onRegister(event) {
       closeModalLogIn();
       refs.formLogIn.reset();
       Notiflix.Report.success(
-        'Nice!',
+        'Hello!',
         'Welcome to Filmoteka! Relax and enjoy your movies 🦥',
         'Thanks!'
       );
@@ -118,12 +114,7 @@ function onLogin(event) {
   const email = document.querySelector('#email_1').value;
   const password = document.querySelector('#password').value;
   if (validateEmail(email) === false || validatePassword(password) === false) {
-    Notiflix.Report.info(
-      'Wow dude',
-      'Email or Password is Outta Line 🙈',
-      'Agree'
-    );
-
+    Notiflix.Report.info('Sorry', 'Fill in all the fields 🙈', 'Agree');
     return;
   }
   signInWithEmailAndPassword(auth, email, password)
@@ -145,7 +136,7 @@ function onLogin(event) {
     .catch(error => {
       Notiflix.Report.warning(
         'Hmm',
-        'Something wrong with your reqwest, please try again 🙊',
+        'Something wrong with your request, please try again 🙊',
         'No problem'
       );
     });

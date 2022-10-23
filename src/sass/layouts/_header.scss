@@ -146,6 +146,8 @@
 .nav__item {
   font-size: 12px;
 
+  cursor: pointer;
+
   &:not(:last-child) {
     margin-right: 20px;
 

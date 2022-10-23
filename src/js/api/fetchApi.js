@@ -65,10 +65,23 @@ async function getGenres() {
   }
 }
 
+async function fetchUpcomingMovies() {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1&region=US`
+    );
+    const movies = response.json();
+    return movies;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   getPopularData,
   fetchMovieSearcher,
   fetchMovieForId,
   getGenres,
   fetchMovieVideoForId,
+  fetchUpcomingMovies,
 };
