@@ -30,6 +30,7 @@
 
 .card__item {
   width: 280px;
+  position: relative;
 
   @media screen and (min-width: getSize(tablet)) {
     width: 336px;
@@ -109,4 +110,22 @@
     padding: 3px 10px;
     @include lh(14px, 15px, 15px);
   }
+}
+
+.icon-hand {
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  bottom: 52px;
+  right: 10px;
+  fill: getColor(accent-text-color);
+  animation: scale-logo 2000ms infinite linear;
+
+  @media screen and (min-width: getSize(desktop)) {
+    display: none;
+  }
+}
+
+.card__item {
+  position: relative;
 }
