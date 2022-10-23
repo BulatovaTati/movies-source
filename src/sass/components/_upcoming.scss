@@ -1,145 +1,154 @@
-.upcoming__title {
-    display: none;
+ .upcoming__title {
+     display: none;
 
-    @media screen and (min-width: getSize(tablet)) {
-        color: getColor(primary-text-color);
-        font-size: 16px;
-        margin-bottom: 5px;
-        display: block;
-        text-align: center;
-        text-transform: uppercase;
-    }
-}
+     @media screen and (min-width: getSize(tablet)) {
+         color: getColor(primary-text-color);
+         font-size: 16px;
+         margin-bottom: 8px;
+         display: block;
+         text-align: center;
+         text-transform: uppercase;
+     }
+ }
 
-.slick-track {
-    display: none;
+ .upcoming {
+     display: none;
 
-    @media screen and (min-width: getSize(tablet)) {
-        height: 180px;
-    }
+     @media screen and (min-width: getSize(tablet)) {
+         display: block;
+         padding-top: 30px;
+     }
+ }
 
-    @media screen and (min-width: getSize(desktop)) {
-        height: 300px;
-    }
-}
+ .slick-track {
+     display: none;
 
+     @media screen and (min-width: getSize(tablet)) {
+         height: 180px;
+     }
 
-.slick-slider .slick-list {
-    display: none;
-
-    @media screen and (min-width: getSize(tablet)) {
-        display: block;
-    }
-}
-
-.upcoming__list {
-    display: none;
-
-    @media screen and (min-width: 768px) {
-        height: 205px;
-        padding: 30px 0px 0px 0px;
-        background-color: rgba(0, 0, 0, 0.3);
-        margin-bottom: 30px;
-    }
-
-    @media screen and (min-width: getSize(desktop)) {
-        height: 310px;
-    }
-}
+     @media screen and (min-width: getSize(desktop)) {
+         height: 300px;
+     }
+ }
 
 
-.upcoming___image {
-    border-radius: 2px;
-    margin-bottom: 10px;
+ .slick-slider .slick-list {
+     display: none;
 
-    width: 80px;
-    height: 115px;
+     @media screen and (min-width: getSize(tablet)) {
+         display: block;
+     }
+ }
 
+ .upcoming__list {
+     display: none;
 
-    @media screen and (min-width: getSize(desktop)) {
-        width: 140px;
-        height: 200px;
-    }
-}
+     @media screen and (min-width: 768px) {
+         height: 205px;
+         padding: 30px 0px 0px 0px;
+         background-color: rgba(0, 0, 0, 0.3);
+         margin-bottom: 30px;
+     }
 
-.upcoming__info-title {
-    display: none;
-    background-color: #8c8c8c69;
-    border-radius: 5px;
-    margin-bottom: 3px;
-    text-align: center;
-}
-
-.upcoming__info-date {
-    display: none;
-    background-color: #8c8c8c69;
-}
-
-.upcoming__info-genre {
-    display: block;
-    text-align: center;
-}
-
-.upcoming__info-year {
-    margin-left: 4px;
-}
-
-.upcoming__info-vote {
-    text-align: center;
-    display: inline-block;
-    margin-right: 4px;
-    width: 30px;
-    border-radius: 3px;
-
-    color: getColor(white-text-color);
-    background-color: getColor(accent-text-color);
-}
+     @media screen and (min-width: getSize(desktop)) {
+         height: 310px;
+     }
+ }
 
 
-.upcoming__item:hover,
-.upcoming__item:focus {
-    transform: translateY(35px);
-    cursor: pointer;
-}
+ .upcoming___image {
+     border-radius: 2px;
+     margin-bottom: 10px;
+
+     width: 80px;
+     height: 115px;
 
 
-.upcoming__item:hover .upcoming__info-title,
-.upcoming__item:focus .upcoming__info-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: getColor(white-text-color);
-    transform: translateY(-100px);
-    padding-bottom: 0px;
+     @media screen and (min-width: getSize(desktop)) {
+         width: 140px;
+         height: 200px;
+     }
+ }
 
-    @media screen and (min-width: getSize(desktop)) {
-        transform: translateY(-180px);
-    }
-}
+ .upcoming__info-title {
+     display: none;
+     background-color: #8c8c8c69;
+     border-radius: 5px;
+     margin-bottom: 3px;
+     text-align: center;
+ }
 
-.upcoming__item:hover .upcoming__info-date,
-.upcoming__item:focus .upcoming__info-date {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: getColor(white-text-color);
-    transform: translateY(-80px);
-    margin-bottom: -45px;
-    padding-bottom: -25px;
+ .upcoming__info-date {
+     display: none;
+     background-color: #8c8c8c69;
+ }
 
-    @media screen and (min-width: getSize(desktop)) {
-        transform: translateY(-130px);
-    }
-}
+ .upcoming__info-genre {
+     display: block;
+     text-align: center;
+ }
+
+ .upcoming__info-year {
+     margin-left: 4px;
+ }
+
+ .upcoming__info-vote {
+     text-align: center;
+     display: inline-block;
+     margin-right: 4px;
+     width: 30px;
+     border-radius: 3px;
+
+     color: getColor(white-text-color);
+     background-color: getColor(accent-text-color);
+ }
 
 
-.upcoming__item:hover .upcoming__info-genre,
-.upcoming__item:focus .upcoming__info-genre {
-    display: none;
-}
+ .upcoming__item:hover,
+ .upcoming__item:focus {
+     transform: translateY(35px);
+     cursor: pointer;
+ }
 
-.upcoming__item:hover .upcoming___image,
-.upcoming__item:focus .upcoming___image {
-    margin-bottom: -10px;
-    transform: scale(140%);
-}
+
+ .upcoming__item:hover .upcoming__info-title,
+ .upcoming__item:focus .upcoming__info-title {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: getColor(white-text-color);
+     transform: translateY(-100px);
+     padding-bottom: 0px;
+
+     @media screen and (min-width: getSize(desktop)) {
+         transform: translateY(-180px);
+     }
+ }
+
+ .upcoming__item:hover .upcoming__info-date,
+ .upcoming__item:focus .upcoming__info-date {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: getColor(white-text-color);
+     transform: translateY(-80px);
+     margin-bottom: -45px;
+     padding-bottom: -25px;
+
+     @media screen and (min-width: getSize(desktop)) {
+         transform: translateY(-130px);
+     }
+ }
+
+
+ .upcoming__item:hover .upcoming__info-genre,
+ .upcoming__item:focus .upcoming__info-genre {
+     display: none;
+ }
+
+ .upcoming__item:hover .upcoming___image,
+ .upcoming__item:focus .upcoming___image {
+     margin-bottom: -10px;
+     transform: scale(140%);
+ }
