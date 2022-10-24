@@ -1,52 +1,32 @@
-const upcomingMovies = document.querySelector('.upcoming__list');
-
 import slick from 'slick-carousel';
 import jquery from 'jquery';
 window.$ = window.jQuery = jquery;
 import { fetchUpcomingMovies } from '../api/fetchApi';
+import { getFromStorage } from './localeStorageServices';
+import { refs } from '../common/refs';
 
-const genres = [
-  { id: 28, name: 'Action' },
-  { id: 12, name: 'Adventure' },
-  { id: 16, name: 'Animation' },
-  { id: 35, name: 'Comedy' },
-  { id: 80, name: 'Crime' },
-  { id: 99, name: 'Documentary' },
-  { id: 18, name: 'Drama' },
-  { id: 10751, name: 'Family' },
-  { id: 14, name: 'Fantasy' },
-  { id: 36, name: 'History' },
-  { id: 27, name: 'Horror' },
-  { id: 10402, name: 'Music' },
-  { id: 9648, name: 'Mystery' },
-  { id: 10749, name: 'Romance' },
-  { id: 878, name: 'Science Fiction' },
-  { id: 10770, name: 'TV Movie' },
-  { id: 53, name: 'Thriller' },
-  { id: 10752, name: 'War' },
-  { id: 37, name: 'Western' },
-];
-
-function getGenres(arrayId) {
-  const arr = [];
-  for (const value of genres) {
-    if (arrayId.includes(value.id)) {
-      arr.push(value.name);
-    }
-  }
-  if (arrayId.length > 1) {
-    arr.splice(1, arr.length);
-  }
-
-  return arr.join(', ');
-}
+const genresObj = getFromStorage('allGenres');
 
 function renderUpconingMovies(movies) {
   return movies
     .map(
       ({ id, poster_path, title, release_date, vote_average, genre_ids }) => {
-        const releaseYear = release_date ? release_date.split('-')[0] : 'No';
-        const movieGenre = genre_ids ? getGenres(genre_ids) : 'Unknown';
+        const releaseYear = release_date
+          ? release_date.split('-')[0]
+          : 'no year';
+
+        let filmGenresArray;
+
+        if (genre_ids && genre_ids.length > 0) {
+          filmGenresArray = genre_ids.map(id => {
+            return genresObj[id];
+          });
+        } else if (genres && genres.length > 0) {
+          filmGenresArray = genres.map(({ name }) => {
+            return name;
+          });
+        }
+
         const poster = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : 'https://sd.keepcalms.com/i/sorry-no-picture-available-2.png';
@@ -57,7 +37,7 @@ function renderUpconingMovies(movies) {
           title,
           releaseYear,
           vote_average,
-          movieGenre
+          filmGenresArray
         );
       }
     )
@@ -70,7 +50,7 @@ function htmlMarkupFilmsSerchHelper(
   title,
   releaseYear,
   vote_average,
-  movieGenre
+  filmGenresArray
 ) {
   return `
     <div class='upcoming__item' data-id=${id}>
@@ -86,7 +66,12 @@ function htmlMarkupFilmsSerchHelper(
             <p data-id=${id} class='upcoming__info-title'>
             ${title}
             </p>
-            <span data-id=${id} class='upcoming__info-genre'>${movieGenre}</span>
+            <span data-id=${id} class='upcoming__info-genre'> 
+             ${
+               filmGenresArray && filmGenresArray.length > 0
+                 ? filmGenresArray[0]
+                 : 'no genres'
+             }</span>
             <p data-id=${id} class='upcoming__info-date'>
             <span data-id=${id} class='upcoming__info-vote'>
             ${vote_average}</span> | 
@@ -113,7 +98,7 @@ fetchUpcomingMovies().then(r => {
     }
   });
 
-  upcomingMovies.insertAdjacentHTML(
+  refs.imageUpComing.insertAdjacentHTML(
     'beforeend',
     renderUpconingMovies(sortMovies)
   );
