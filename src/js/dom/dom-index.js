@@ -7,3 +7,4 @@ import './reanderTranding';
 import './localeStorage-watch&queue';
 import './trailer';
 import './create-modal-footer-mark';
+import './modal-movie-upc';

@@ -82,15 +82,15 @@ function htmlMarkupFilmsSerchHelper(
         loading='lazy' 
         width="100px" 
         height="148px" />
-        <div  class='upcoming__info'>
-            <p class='upcoming__info-title'>
+        <div data-id=${id}  class='upcoming__info'>
+            <p data-id=${id} class='upcoming__info-title'>
             ${title}
             </p>
-            <span class='upcoming__info-genre'>${movieGenre}</span>
-            <p class='upcoming__info-date'>
-            <span class='upcoming__info-vote'>
+            <span data-id=${id} class='upcoming__info-genre'>${movieGenre}</span>
+            <p data-id=${id} class='upcoming__info-date'>
+            <span data-id=${id} class='upcoming__info-vote'>
             ${vote_average}</span> | 
-            <span class='upcoming__info-year'>${releaseYear}
+            <span data-id=${id} class='upcoming__info-year'>${releaseYear}
             </span>
             </p>
         </div>
@@ -131,6 +131,5 @@ fetchUpcomingMovies().then(r => {
     swipe: true,
     swipeToSlide: true,
     accessibility: false,
-    dots: true,
   });
 });
