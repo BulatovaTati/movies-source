@@ -54,11 +54,3 @@ function showPassword() {
     refs.iconForUnShowPassword.classList.add('visually-hidden');
   }
 }
-
-// function setThemOnModalLogIn() {
-//   if (document.querySelector('body').classList.contains('dark')) {
-//     modalDivLogIn.classList.add('modal_login--dark');
-//   } else {
-//     modalDivLogIn.classList.remove('modal_login--dark');
-//   }
-// }
