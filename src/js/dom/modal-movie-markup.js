@@ -13,7 +13,7 @@ function renderMovieInfo({
 }) {
   const logo = production_companies.map(log => {
     if (log.logo_path === null) {
-      return `https://sd.keepcalms.com/i/sorry-no-picture-available-2.png`;
+      return `https://via.placeholder.com/200x100`;
     } else {
       return `https://image.tmdb.org/t/p/w200/${log.logo_path}`;
     }
