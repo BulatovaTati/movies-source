@@ -8,12 +8,14 @@ import { refs } from '../common/refs';
 const genresObj = getFromStorage('allGenres');
 
 function renderUpconingMovies(movies) {
-      return movies
-      .map(({ id, poster_path, title, release_date, vote_average, genre_ids }) => {
-            const releaseYear = release_date
-            ? release_date.split('-')[0]
-            : 'no year';
-            let filmGenresArray=[];
+return movies
+.map(
+({ id, poster_path, title, release_date, vote_average, genre_ids }) => {
+const releaseYear = release_date
+? release_date.split('-')[0]
+: 'no year';
+
+      let filmGenresArray;
 
     if (genre_ids && genre_ids.length > 0) {
       filmGenresArray = genre_ids.map(id => {
@@ -43,65 +45,48 @@ function renderUpconingMovies(movies) {
 }
 
 function htmlMarkupFilmsSerchHelper(
-  id,
-  poster,
-  title,
-  releaseYear,
-  vote_average,
-  filmGenresArray
+id,
+poster,
+title,
+releaseYear,
+vote_average,
+filmGenresArray
 ) {
-  return `
-    <div class='upcoming__item' data-id=${id}>
-        <img data-id=${id} 
-        class="upcoming___image" 
-        style="border-radius: 5px"
-        src=${poster} 
-        alt='Movie Poster' 
-        loading='lazy' 
-        width="100px" 
-        height="148px" />
-        <div data-id=${id} class='upcoming__info'>
-            <p data-id=${id} class='upcoming__info-title'>${title}</p>
-            <span data-id=${id} class='upcoming__info-genre'> 
-             ${
-               filmGenresArray && filmGenresArray.length > 0
-                 ? filmGenresArray[0]
-                 : 'no genres'
-             }</span>
-            <p data-id=${id} class='upcoming__info-date'>
-            <span data-id=${id} class='upcoming__info-vote'>${vote_average}</span> | 
-            <span data-id=${id} class='upcoming__info-year'>${releaseYear}</span>
-            </p>
-        </div>
-    </div>
-    `;
+return <div class='upcoming__item' data-id=${id}> <img data-id=${id} class="upcoming___image" style = "border-radius: 5px" src=${poster} alt='Movie Poster' loading='lazy' width="100px" height="148px" /> <div data-id=${id} class='upcoming__info'> <p data-id=${id} class='upcoming__info-title'> ${title} </p> <span data-id=${id} class='upcoming__info-genre'> ${ filmGenresArray && filmGenresArray.length > 0 ? filmGenresArray[0] : 'no genres' }</span> <p data-id=${id} class='upcoming__info-date'> <span data-id=${id} class='upcoming__info-vote'> ${vote_average}</span> | <span data-id=${id} class='upcoming__info-year'>${releaseYear} </span> </p> </div> </div> ;
 }
 
 fetchUpcomingMovies().then(r => {
-  const movies = r.results;
-  const sortedMovies = movies.filter(movie => 
-    movie.backdrop_path !== null &&
-    movie.poster_path !== null &&
-    movie.genre_ids.length > 0
-  );
+const movies = r.results;
+let sortMovies = [];
+movies.map(movie => {
+if (
+movie.backdrop_path === null ||
+movie.poster_path === null ||
+movie.genre_ids.length === 0
+) {
+return;
+} else {
+sortMovies.push(movie);
+}
+});
 
-  refs.imageUpComing.insertAdjacentHTML(
-    'beforeend',
-    renderUpcomingMovies(sortedMovies)
-  );
+refs.imageUpComing.insertAdjacentHTML(
+'beforeend',
+renderUpconingMovies(sortMovies)
+);
 
-  $('.upcoming__list').slick({
-    slidesToShow: 8,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    arrows: false,
-    centerMode: true,
-    centerPadding: '15px',
-    edgeFriction: 0.6,
-    slidesPerRow: 1,
-    swipe: true,
-    swipeToSlide: true,
-    accessibility: false,
-  });
+$('.upcoming__list').slick({
+slidesToShow: 8,
+slidesToScroll: 1,
+autoplay: true,
+autoplaySpeed: 2000,
+arrows: false,
+centerMode: true,
+centerPadding: '15px',
+edgeFriction: 0.6,
+slidesPerRow: 1,
+swipe: true,
+swipeToSlide: true,
+accessibility: false,
+});
 });
