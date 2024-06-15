@@ -15,12 +15,11 @@ function renderUpconingMovies(movies) {
           ? release_date.split('-')[0]
           : 'no year';
 
-        let filmGenresArray;
+        let filmGenresArray = [];
 
-        if (genre_ids && genre_ids.length > 0) {
-          filmGenresArray = genre_ids.map(id => {
-            return genresObj[id];
-          });
+if (genre_ids && genre_ids.length > 0) {
+          filmGenresArray = genre_ids.map(id => genresObj[id] || 'unknown genre');
+        }
         } else if (genres && genres.length > 0) {
           filmGenresArray = genres.map(({ name }) => {
             return name;
