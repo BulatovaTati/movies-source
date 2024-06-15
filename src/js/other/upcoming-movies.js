@@ -45,14 +45,38 @@ const releaseYear = release_date
 }
 
 function htmlMarkupFilmsSerchHelper(
-id,
-poster,
-title,
-releaseYear,
-vote_average,
-filmGenresArray
+  id,
+  poster,
+  title,
+  releaseYear,
+  vote_average,
+  filmGenresArray
 ) {
-return <div class='upcoming__item' data-id=${id}> <img data-id=${id} class="upcoming___image" style = "border-radius: 5px" src=${poster} alt='Movie Poster' loading='lazy' width="100px" height="148px" /> <div data-id=${id} class='upcoming__info'> <p data-id=${id} class='upcoming__info-title'> ${title} </p> <span data-id=${id} class='upcoming__info-genre'> ${ filmGenresArray && filmGenresArray.length > 0 ? filmGenresArray[0] : 'no genres' }</span> <p data-id=${id} class='upcoming__info-date'> <span data-id=${id} class='upcoming__info-vote'> ${vote_average}</span> | <span data-id=${id} class='upcoming__info-year'>${releaseYear} </span> </p> </div> </div> ;
+  return `
+    <div class='upcoming__item' data-id=${id}>
+        <img data-id=${id} 
+        class="upcoming___image" 
+        style="border-radius: 5px"
+        src=${poster} 
+        alt='Movie Poster' 
+        loading='lazy' 
+        width="100px" 
+        height="148px" />
+        <div data-id=${id} class='upcoming__info'>
+            <p data-id=${id} class='upcoming__info-title'>${title}</p>
+            <span data-id=${id} class='upcoming__info-genre'> 
+             ${
+               filmGenresArray && filmGenresArray.length > 0
+                 ? filmGenresArray[0]
+                 : 'no genres'
+             }</span>
+            <p data-id=${id} class='upcoming__info-date'>
+            <span data-id=${id} class='upcoming__info-vote'>${vote_average}</span> | 
+            <span data-id=${id} class='upcoming__info-year'>${releaseYear}</span>
+            </p>
+        </div>
+    </div>
+    `;
 }
 
 fetchUpcomingMovies().then(r => {
