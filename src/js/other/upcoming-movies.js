@@ -37,7 +37,7 @@ function renderUpcomingMovies(movies) {
           vote_average,
           filmGenresArray
         );
-      }
+      }}
     )
     .join('');
 }
