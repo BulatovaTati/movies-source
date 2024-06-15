@@ -19,7 +19,7 @@ const releaseYear = release_date
 
     if (genre_ids && genre_ids.length > 0) {
       filmGenresArray = genre_ids.map(id => {
-        return genresObj[id];
+        return (genresObj[id] || 'unknown genre');
       });
     } else if (genres && genres.length > 0) {
       filmGenresArray = genres.map(({ name }) => {
