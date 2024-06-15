@@ -15,11 +15,17 @@ const releaseYear = release_date
 ? release_date.split('-')[0]
 : 'no year';
 
-        let filmGenresArray = [];
+    let filmGenresArray=[];
 
-        if (genre_ids && genre_ids.length > 0) {
-          filmGenresArray = genre_ids.map(id => genresObj[id] || 'unknown genre');
-        }
+    if (genre_ids && genre_ids.length > 0) {
+      filmGenresArray = genre_ids.map(id => {
+        return genresObj[id];
+      });
+    } else if (genres && genres.length > 0) {
+      filmGenresArray = genres.map(({ name }) => {
+        return name;
+      });
+    }
 
     const poster = poster_path
       ? `https://image.tmdb.org/t/p/w500${poster_path}`
