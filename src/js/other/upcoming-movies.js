@@ -17,15 +17,15 @@ function renderUpconingMovies(movies) {
 
         let filmGenresArray = [];
 
-if (genre_ids && genre_ids.length > 0) {
+        if (genre_ids && genre_ids.length > 0) {
           filmGenresArray = genre_ids.map(id => genresObj[id] || 'unknown genre');
         }
-        } else if (genres && genres.length > 0) {
+         else if (genres && genres.length > 0) {
           filmGenresArray = genres.map(({ name }) => {
             return name;
           });
         }
-
+      }
         const poster = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : 'https://sd.keepcalms.com/i/sorry-no-picture-available-2.png';
