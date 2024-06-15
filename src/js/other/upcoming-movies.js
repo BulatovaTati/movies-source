@@ -48,16 +48,14 @@ function htmlMarkupFilmsSerchHelper(
     <div class='upcoming__item' data-id=${id}>
         <img data-id=${id} 
         class="upcoming___image" 
-        style = "border-radius: 5px"
+        style="border-radius: 5px"
         src=${poster} 
         alt='Movie Poster' 
         loading='lazy' 
         width="100px" 
         height="148px" />
-        <div data-id=${id}  class='upcoming__info'>
-            <p data-id=${id} class='upcoming__info-title'>
-            ${title}
-            </p>
+        <div data-id=${id} class='upcoming__info'>
+            <p data-id=${id} class='upcoming__info-title'>${title}</p>
             <span data-id=${id} class='upcoming__info-genre'> 
              ${
                filmGenresArray && filmGenresArray.length > 0
@@ -65,10 +63,8 @@ function htmlMarkupFilmsSerchHelper(
                  : 'no genres'
              }</span>
             <p data-id=${id} class='upcoming__info-date'>
-            <span data-id=${id} class='upcoming__info-vote'>
-            ${vote_average}</span> | 
-            <span data-id=${id} class='upcoming__info-year'>${releaseYear}
-            </span>
+            <span data-id=${id} class='upcoming__info-vote'>${vote_average}</span> | 
+            <span data-id=${id} class='upcoming__info-year'>${releaseYear}</span>
             </p>
         </div>
     </div>
@@ -77,22 +73,15 @@ function htmlMarkupFilmsSerchHelper(
 
 fetchUpcomingMovies().then(r => {
   const movies = r.results;
-  let sortMovies = [];
-  movies.map(movie => {
-    if (
-      movie.backdrop_path === null ||
-      movie.poster_path === null ||
-      movie.genre_ids.length === 0
-    ) {
-      return;
-    } else {
-      sortMovies.push(movie);
-    }
-  });
+  const sortedMovies = movies.filter(movie => 
+    movie.backdrop_path !== null &&
+    movie.poster_path !== null &&
+    movie.genre_ids.length > 0
+  );
 
   refs.imageUpComing.insertAdjacentHTML(
     'beforeend',
-    renderUpconingMovies(sortMovies)
+    renderUpcomingMovies(sortedMovies)
   );
 
   $('.upcoming__list').slick({
