@@ -1,5 +1,5 @@
-
 🎬 Filmoteka Movie Website 🎬
+
 Technologies Used: HTML, SASS, JS, Parcel
 
 Project Type: Team Collaboration
